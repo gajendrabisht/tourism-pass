@@ -1,0 +1,16 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    url: jdbc:h2:file:~/git-repo/LeisurePass/tourism-pass/data/tourism-pass;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
