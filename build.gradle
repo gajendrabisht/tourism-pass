@@ -45,7 +45,7 @@ task cucumber() {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--format', 'html:cucumber-report', '--glue', 'cucumber.steps', 'src/test/resources/features']
+            args = ['--plugin', 'html:cucumber-report', '--glue', 'com.leisure_pass.cucumber.steps', 'src/test/resources/features']
         }
     }
 }
@@ -77,6 +77,13 @@ dependencies {
     testCompile("org.mockito:mockito-core:$mockitoVersion")
     testCompile("org.mockito:mockito-junit-jupiter:$mockitoVersion")
     testCompile("org.apache.httpcomponents:httpclient:4.5.6")
+}
+
+build {
+    dependsOn(
+            test,
+            cucumber
+    )
 }
 
 

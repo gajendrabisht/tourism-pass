@@ -1,6 +1,7 @@
 package com.leisure_pass.service;
 
 import com.leisure_pass.entity.Customer;
+import com.leisure_pass.exception.CustomerNotFoundException;
 import com.leisure_pass.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,11 @@ public class CustomerService {
     }
 
     public Customer get(UUID customerId) {
-        return customerRepository.findById(customerId).get();
+        return customerRepository.findById(customerId).orElseThrow(() -> new CustomerNotFoundException(customerId));
     }
 
     public Customer save(Customer customer) {
         return customerRepository.saveAndFlush(customer);
     }
-
 
 }

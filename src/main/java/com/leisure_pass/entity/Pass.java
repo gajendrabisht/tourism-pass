@@ -24,7 +24,7 @@ public class Pass {
         // for jackson mapper
     }
 
-    public Pass(UUID id, String city, int length, Date startDate, Status status) {
+    public Pass(UUID id, String city, int length, Status status) {
         this.id = id;
         this.city = city;
         this.length = length;

@@ -3,6 +3,8 @@ package com.leisure_pass.cucumber;
 import com.leisure_pass.Application;
 import com.leisure_pass.repository.CustomerRepository;
 import com.leisure_pass.repository.PassRepository;
+import org.apache.http.HttpClientConnection;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,7 +31,8 @@ public class CucumberTestApplication {
     @LocalServerPort
     private int port = 8080;
 
-    public RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+    public TestRestTemplate restTemplate = new TestRestTemplate();
+//    public RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 
     public String baseUrl() {
         return String.format("http://localhost:%s", port);

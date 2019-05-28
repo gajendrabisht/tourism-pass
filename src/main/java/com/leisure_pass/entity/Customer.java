@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public class Customer {
     private String name;
     private String city;
     @OneToMany
-    private List<Pass> passes;
+    private List<Pass> passes = new ArrayList<>();
 
     public void addPass(Pass pass) {
         passes.add(pass);

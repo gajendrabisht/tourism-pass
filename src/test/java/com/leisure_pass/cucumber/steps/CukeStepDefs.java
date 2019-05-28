@@ -27,6 +27,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 
 public class CukeStepDefs extends CucumberTestApplication {
 
@@ -55,8 +56,9 @@ public class CukeStepDefs extends CucumberTestApplication {
     public void customer_cancels_a_pass(String customerId, String action, String passId) {
         String url = String.format("%s/customers/%s/passes/%s/%s", baseUrl(), customerId, passId, action);
         HttpEntity<Object> requestEntity = new HttpEntity<>(null, getHttpHeaders());
-        ResponseEntity<Void> response = restTemplate.exchange(url, PATCH, requestEntity, Void.class);
+        ResponseEntity<String> response = restTemplate.exchange(url, PUT, requestEntity, String.class);
         cukeWorld.setResponseStatus(response.getStatusCodeValue());
+        cukeWorld.setResponseBody(response.getBody());
     }
 
     @When("^vendor '(.*)' checks validity of pass '(.*)'")
